@@ -1,53 +1,57 @@
-let myMessage = "press left arrow if you pour milk first and\n     right arrow if you pour cereal first"
-let yLocation = 75
-let xLocation = 205
-let xLocation2 = 195
-let yLocation2 = 75
-let shapes = [circles, squares, triangles];
+let myQuestion = "What's your secret superpower?"
+ 
+let contents = "";
+let all_the_answers = []
+
+let saveAnswer_button; 
+let showAnswers_button;
+let textBox; 
 
 function setup() {
-  createCanvas(405, 400);
+  createCanvas(500, 400);
+  saveAnswer_button = createButton("save your answer");
+  saveAnswer_button.position(220,150)
+  saveAnswer_button.mousePressed(saveText)
+  
+  showAnswer_button= createButton("see the answers");
+  showAnswer_button.position(220,300)
+  showAnswer_button.mousePressed(showAnswers);
+  
+  
+  textBox = createInput("type your answer here")
+  textBox.size(200,40)
+  textBox.position(50,100)
+  textBox.input(storeText)
+  
   background(50);
-  noStroke();
   fill(255);
-  text(myMessage, 100, 50);
-}
-function draw() { 
-}
-
-
-function keyPressed(){
-  if(keyCode === LEFT_ARROW){
-    fill("pink")
-    let data2 = shapes[int(random(0, shapes.length))];
-    data2(xLocation2,yLocation2)
-
-    if(xLocation2 === 5){
-      yLocation2 = yLocation2+10
-      xLocation2 = 205
-    }
-    xLocation2 = xLocation2 - 10
-  }  
-
-  if(keyCode === RIGHT_ARROW){
-    fill("green")
-    let data = shapes[int(random(0, shapes.length))];
-    data(xLocation,yLocation)
-  if (xLocation === 395) {
-    yLocation = yLocation+10 
-    xLocation = 195
-  }
-    xLocation = xLocation + 10
-  }  
+  textSize(14);
+  text(myQuestion,50,50) 
 }
 
+function draw() {  
+}
 
-function circles (xLocation, yLocation){
- ellipse(xLocation + 5,yLocation + 5, 10, 10)
+function saveText(){
+   all_the_answers.push(contents);
+   contents = "" ;
+   textBox.value("type your answer here")
+   print(all_the_answers)   
 }
-function squares (xLocation, yLocation){
-  square(xLocation, yLocation, 9.5)
+
+function storeText(){
+  contents = this.value(); 
 }
-function triangles (xLocation,yLocation){
-  triangle(xLocation + 5, yLocation, xLocation + 10, yLocation + 5 * sqrt(3), xLocation, yLocation + 5 * sqrt(3))
+
+function showAnswers(){
+  
+  textBox.hide();
+  saveAnswer_button.hide();
+  showAnswer_button.hide();
+  
+  textSize(14);
+  fill("pink");    
+  text(all_the_answers ,50,100);
+    
 }
+
