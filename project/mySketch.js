@@ -1,5 +1,4 @@
 let myQuestion = "What's your secret superpower?"
- 
 let contents = "";
 let all_the_answers = []
 
@@ -29,8 +28,10 @@ function setup() {
   text(myQuestion,50,50) 
 }
 
+
 function draw() {  
 }
+
 
 function saveText(){
    all_the_answers.push(contents);
@@ -51,7 +52,11 @@ function showAnswers(){
   
   textSize(14);
   fill("pink");    
-  text(all_the_answers ,50,100);
-    
+  textAlign(LEFT, TOP);
+  
+  let yPos = 100; 
+  for (let i = 0; i < all_the_answers.length; i++) {
+    text("- " + all_the_answers[i], 50, yPos);
+    yPos += 30;
 }
-
+}
