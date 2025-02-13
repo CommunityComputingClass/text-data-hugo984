@@ -1,19 +1,24 @@
-let myQuestion = "What's your secret superpower?"
+let myQuestion = "What is your favorite movie?"
 let contents = "";
 let all_the_answers = []
 
 let saveAnswer_button; 
 let showAnswers_button;
 let textBox; 
+let myFont;
+
+function preload(){
+  myFont = loadFont("Stagera.otf")
+}
 
 function setup() {
   createCanvas(500, 400);
   saveAnswer_button = createButton("save your answer");
-  saveAnswer_button.position(220,150)
+  saveAnswer_button.position(275,125)
   saveAnswer_button.mousePressed(saveText)
   
   showAnswer_button= createButton("see the answers");
-  showAnswer_button.position(220,300)
+  showAnswer_button.position(285,300)
   showAnswer_button.mousePressed(showAnswers);
   
   
@@ -22,9 +27,11 @@ function setup() {
   textBox.position(50,100)
   textBox.input(storeText)
   
-  background(50);
+  textFont(myFont)
+  background("pink");
   fill(255);
-  textSize(14);
+  textSize(18);
+  stroke(10)
   text(myQuestion,50,50) 
 }
 
@@ -51,7 +58,7 @@ function showAnswers(){
   showAnswer_button.hide();
   
   textSize(14);
-  fill("pink");    
+  fill("white");    
   textAlign(LEFT, TOP);
   
   let yPos = 100; 
