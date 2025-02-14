@@ -16,11 +16,17 @@ function setup() {
   saveAnswer_button = createButton("save your answer");
   saveAnswer_button.position(275,125)
   saveAnswer_button.mousePressed(saveText)
+  saveAnswer_button.style("background-color", "rgba(185, 132, 146, 0.42)");
+  saveAnswer_button.style("padding", "10px");
+  saveAnswer_button.style("color", "white");
+  saveAnswer_button.style("border-radius", "5px");
   
   showAnswer_button= createButton("see the answers");
   showAnswer_button.position(285,300)
   showAnswer_button.mousePressed(showAnswers);
-  
+  showAnswer_button.style("background-color", "rgba(185, 132, 146, 0.42)"); // Green
+  showAnswer_button.style("color", "white");
+  showAnswer_button.style("border-radius", "5px");
   
   textBox = createInput("type your answer here")
   textBox.size(200,40)
